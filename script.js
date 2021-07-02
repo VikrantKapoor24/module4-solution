@@ -1,17 +1,38 @@
+/* speakhello.js*/
+(function(window) {
+  var helloSpeaker = new Object();
+  var speakWord = "hello"
 
-(function () {
+  helloSpeaker.speak = function(name) {
+    console.log(speakWord + "" + name);
+  };
 
-var names = ["Yaakov", "John", "Jen", "Jason", "Paul", "Frank", "Larry", "Paula", "Laura", "Jim"];
+  window.helloSpeaker = helloSpeaker;
+})(window);
 
-for (var i = 0; i < names.length; i++) {
-  var firstLetter = names[i].charAt(0).toLowerCase();
+/*speakgoodbye.js*/
+(function(window) {
+  var byeSpeaker = new Object();
+  var speakWord = "Good Bye";
 
-  if (firstLetter === 'j') {
-    byeSpeaker(names[i]);
+  byeSpeaker.speak = function(name) {
+    console.log(speakWord + "" + name);
+  };
+
+  window.byeSpeaker = byeSpeaker;
+})(window);
+
+/* script.js*/
+(function() {
+  var names = ["Yaakov", "John", "Jen", "Jason", "Paul", "Frank", "Larry", "Paula", "Laura", "Jim"];
+
+  for (var i = 0; i < names.length; i++) {
+    var firstLetter = names[i].charAt(0).toLowerCase();
+
+    if (firstLetter === 'j') {
+      byeSpeaker.speak(names[i]);
+    } else {
+      helloSpeaker.speak(names[i]);
+    }
   }
-  else {
-    helloSpeaker(names[i]);
-  }
-}
-
 })();
